@@ -90,4 +90,4 @@ To enable native CAPS comprehension in your AI coding assistant or LLM environme
 If CAPS saves you time or provides extra value in your workflows, you are welcome to support its continued evolution:
 
 [![GitHub Sponsors](https://img.shields.io/badge/GitHub_Sponsors-ea4aaa?style=flat-square&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/capsky-jakub)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/capsky)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/capskyjakub)
