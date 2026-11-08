@@ -1,0 +1,55 @@
+# ==============================================================================
+# Pattern A: Sentinel Isolation & Privacy Boundaries
+# ==============================================================================
+# Why: Allows creating arbitrary future scratchpads, unannounced drafts, or internal
+# assets without editing .gitignore or risking accidental commits to public history.
+
+# 1. Any file or directory starting with an underscore (e.g., _drafts/, _scratch/, _priv/, _notes.txt)
+_*/
+_*
+
+# 2. Dedicated private directories
+private/
+priv/
+.gg_utils/
+.agents/
+
+
+# ==============================================================================
+# Secrets & Environment Configurations
+# ==============================================================================
+# Why: Protects local runtime secrets, authentication tokens, and credentials.
+*.env
+*.env.*
+*.local
+*.secret
+*.secret.*
+*.key
+*.pem
+.geminiignore
+GEMINI.md
+credentials.*
+
+
+# ==============================================================================
+# Operating System & Editor Artifacts
+# ==============================================================================
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# ==============================================================================
+# Python & Build Cache Artifacts
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
