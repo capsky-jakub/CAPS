@@ -1,6 +1,6 @@
 # **CAPS: Cognitive AI Prompt Syntax**
 ### *Specification & Cognitive Framework for Deterministic Human-to-AI Interaction*
-**Version:** `1.0.0` | **Status:** Final / Stable | **Date:** 2026-11-08
+**Version:** `1.1.0` | **Status:** Final / Stable | **Date:** 2026-11-17
 
 ---
 
@@ -21,20 +21,33 @@
 * `!` = **ERROR / SYMPTOM:** Bugs, exceptions, stack traces, broken behavior, or issues to diagnose/fix. (Problem state requiring resolution).
 * `:` = **BEFORE:** Input pattern, reference code, or the initial state before modification.
 * `=` = **AFTER/RESULT:** Output pattern, final output state, or specific target results.
-* `///` = **BOUNDARY/NEW:** Hard logical break. Confirms the previous topic/task has been solved, clears active working context, and starts a new topic/task. Can be used standalone or with a title of topic/task (e.g., `/// OS security audit`).
+* `///` = **TOPIC / MILESTONE BOUNDARY:** When used at the very beginning of a newly initiated session, it defines the session's overarching **Prime Topic**. When used mid-session, it confirms that the previous **Sub-Topic** is completed/approved, clears transient sub-topic state (resolved errors `!`, answered queries `?`, finished tasks `>`), retains the Prime Topic and session-wide context (`-`), and initiates a new **Sub-Topic**. Can be used standalone or with a title (e.g., `/// OS security audit`).
 
 ### **1.1 Operational Indicators (Shorthand Macros)**
 
-Predefined macro tokens attached directly to their semantic symbol without spaces. Each macro is declared on its own dedicated line and can be used at root level or hierarchically nested (e.g., `>>www`):
+Predefined macro tokens attached directly to their semantic symbol without spaces. Each macro is declared on its own dedicated line and is active either for a **`[Single Turn]`** (current prompt–response cycle only) or the **`[Entire Session]`** (persisting across `///` sub-topic transitions). Used at root level (depth 1), a macro applies globally; when hierarchically nested (e.g., `>>www`, `2>=`), it applies strictly to its direct parent node's subtree and overrides conflicting root-level macros for that subtree:
 
-* `>www` (alias `>w3`) = **WEB SEARCH:** Actively search the web (Google Search) for current, authoritative information and thoroughly synthesize the results with your own reasoning.
-* `>step` (alias `>%`) = **STEP-BY-STEP:** Proceed interactively one step at a time, pausing for confirmation after each step before continuing.
-* `>test` (alias `>=`) = **EMPIRICAL TEST:** Verify the solution empirically (run tests, syntax checks, or state inspections) to confirm correctness before completing.
-* `-sudo` (alias `-$`) = **ELEVATED ACCESS:** Full administrative (`sudo`/`root`) privileges are granted. You may run privileged diagnostics or target root-level configurations directly without permission warnings.
-* `=chat` (alias `=?`) = **ADVISORY / CHAT ONLY:** Read-only mode. Do not modify files, configuration, or system state. Discuss, analyze, and propose the next steps or solution in the conversation.
-* `=min` (alias `=-`) = **MINIMAL OUTPUT:** Omit explanations and background context. Output only the direct answer, final code block, or exact command requested.
-* `=max` (alias `=+`) = **DEEP MECHANICS:** Provide an exhaustive, detailed breakdown explaining the underlying mechanics, edge cases, and "Why" behind the solution.
-* `=@{lang}` (e.g., `=@cs`, `=@es`, `=@de`) = **TARGET LANGUAGE:** Force output generation entirely in the specified ISO 639-1 language code (overrides default or global language constraints for the transaction).
+* `>www` (alias `>w`) `[Single Turn]` = **WEB SEARCH:** Actively search the web (Google Search) for current, authoritative information and thoroughly synthesize the results with your own reasoning.
+* `>step` (alias `>%`) `[Entire Session]` = **STEP-BY-STEP:** Proceed interactively one step at a time, pausing for confirmation after each step before continuing.
+* `>test` (alias `>=`) `[Single Turn]` = **EMPIRICAL TEST:** Verify the solution empirically (run tests, syntax checks, or state inspections) to confirm correctness before completing.
+* `>time` (alias `>t`) `[Entire Session]` = **RESPONSE TIMESTAMP:** Append the current local timestamp (`YYYY-MM-DD HH:MM:SS`, sourced from runtime metadata or system clock—never fabricated) to the very end of the response, gently highlighted in Markdown (e.g., separated by a horizontal rule `---` and formatted as a blockquote or inline code).
+* `-chrome` (alias `-//`) `[Entire Session]` = **BROWSER CDP ACCESS:** Live Chrome DevTools Protocol (typically via an MCP attach-mode server) access is available. Autonomously connect to the user's running Chrome browser session whenever the task requires web inspection or interaction.
+* `-sudo` (alias `-$`) `[Entire Session]` = **ELEVATED ACCESS:** Full administrative (`sudo`/`root`) privileges are granted. You may run privileged diagnostics or target root-level configurations directly without permission warnings.
+* `=chat` (alias `=?`) `[Single Turn]` = **ADVISORY / CHAT ONLY:** Read-only mode. Do not modify files, configuration, or system state. Discuss, analyze, and propose the next steps or solution in the conversation.
+* `=min` (alias `=-`) `[Single Turn]` = **MINIMAL OUTPUT:** Omit explanations and background context. Output only the direct answer, final code block, or exact command requested.
+* `=max` (alias `=+`) `[Single Turn]` = **DEEP MECHANICS:** Provide an exhaustive, detailed breakdown explaining the underlying mechanics, edge cases, and "Why" behind the solution.
+* `=&{lang}` (e.g., `=&cs`, `=&es`, `=&de`) `[Entire Session]` = **TARGET LANGUAGE:** Force output generation entirely in the specified ISO 639-1 language code (overrides default or global language constraints for the session).
+
+**Deactivation & Suppression (`.` Suffix):**
+Appending a trailing dot (`.`) to any operational macro or alias turns it **OFF** or **suppresses** its behavior:
+1. **On `[Entire Session]` Indicators (`>t.`, `>%.`, `-//.`, `-$.`, `=&{lang}.`):**
+   * Deactivates an active session-wide indicator from that turn forward (until re-enabled).
+   * Even if not previously activated, typing `-$.` or `-//.` acts as an explicit session lock (*"Do not use `sudo`"* / *"Do not connect to Chrome"*).
+2. **On `[Single Turn]` Indicators (`>w.`, `>=.`, `=-.`, `=+.`, etc.):**
+   * Acts as a 1-token negative constraint (suppression) for that turn or nested subtree:
+     * `>w.` (`>www.`) = *"Do **not** search the web for this prompt/sub-task (rely strictly on local context)."*
+     * `>=.` (`>test.`) = *"Do **not** run empirical tests/commands right now (just write/update the code)."*
+   * When used on a nested child node (e.g., root `=max` with a nested `==max.` on a trivial sub-step), it exempts that child node's subtree from the root indicator.
 
 ---
 
@@ -45,16 +58,16 @@ Depth and logical parent-child relationships are defined either by **repetition*
 * **Separators:** Statements must be separated by a line break (Enter or Shift+Enter) to be processed as individual nodes.
 * **Repetition:** `--` is level 2, `!!!` is level 3, `::::` is level 4, etc. (Preferred for visual clarity).
 * **Compression:** `2-` is level 2, `3!` is level 3. (Preferred for deep nesting or brevity).
-* **Nesting Logic:** A nested line (e.g., `??` or `2?`) always elaborates on or specifies the instruction of its direct parent (e.g., `>` or `1>`).
+* **Nesting Logic:** A nested line (e.g., `??` or `2?`) always attaches to and elaborates on the most recent preceding statement one level above it (its direct parent, e.g., `>` or `1>`), without skipping levels.
 * **Exception:** The `///` symbol cannot be repeated or nested.
 
 ### **2.1 Lexical & Disambiguation Rules**
 
-* **Whitespace Separation:** A single whitespace is mandatory between a structural symbol and its statement text (e.g., `> Task`, not `>Task`). The absence of whitespace is reserved strictly for operational macros (e.g., `>www`, `-$`, `=?`).
+* **Whitespace Separation:** A single whitespace is mandatory between a structural symbol and its statement text (e.g., `> Task`, not `>Task`), except when a symbol line has no inline text and is immediately followed by a `~~~` contextual block (e.g., `::::` or `====` before `~~~`). The absence of whitespace before characters is reserved strictly for operational macros (e.g., `>www`, `-$`, `-//`, `=?`).
 * **Column 0 & Indentation:** Leading whitespace (spaces or tabs) before symbols is ignored by the parser. Depth is determined exclusively by symbol repetition (`--`) or integer compression (`2-`), not by visual column indentation.
 * **Notation Exclusivity:** Visual repetition and integer compression are mutually exclusive per node. Combining them (e.g., `2>>`) is invalid syntax.
 * **Blank Lines & Trivia:** Empty lines between statements are treated as trivia and do not alter the active hierarchy or reset parent-child scope.
-* **Macro Isolation (One Per Line):** Operational macros must be declared on their own dedicated line, adhering to the one-statement-per-line principle. Multiple macros must not be chained on a single line.
+* **Macro Isolation (One Per Line):** Operational macros must be declared on their own dedicated line as leaf nodes (they cannot have child nodes), adhering to the one-statement-per-line principle. Multiple macros must not be chained on a single line.
 
 ---
 
@@ -62,7 +75,7 @@ Depth and logical parent-child relationships are defined either by **repetition*
 
 For multi-line payloads (code snippets, file excerpts, logs) that belong to a single node:
 
-* **Syntax:** Enclose multi-line content within `~~~` on independent lines.
+* **Syntax:** Enclose multi-line content within `~~~` on independent lines immediately following a statement node (with no intervening blank lines).
 * **Inheritance & Literal Payload:** Content enclosed within `~~~` is treated as raw, literal data. It automatically inherits the statement type and hierarchy level of the immediately preceding node without requiring internal prefixes or indentation.
 
 ---
@@ -169,24 +182,21 @@ Formal syntax specification conforming to ISO/IEC 14977:
 ```ebnf
 Prompt           = { Transaction | Boundary } ;
 Transaction      = { Statement | BlankLine } ;
-Boundary         = "///" , [ Space , Text ] , Newline ;
+Boundary         = { Space } , "///" , [ 1*Space , Text ] , Newline ;
 
-Statement        = ( MacroStatement | NodeStatement ) ;
+Statement        = { Space } , ( MacroStatement | NodeStatement ) ;
 MacroStatement   = MacroToken , Newline ;
-NodeStatement    = Symbol , Space , Text , Newline , [ BlockPayload ] ;
+NodeStatement    = Symbol , ( ( 1*Space , Text , Newline , [ BlockPayload ] )
+                            | ( Newline , BlockPayload ) ) ;
 
 Symbol           = RepetitionSymbol | IntegerSymbol ;
 RepetitionSymbol = 1*"-" | 1*"?" | 1*">" | 1*"!" | 1*":" | 1*"=" ;
 IntegerSymbol    = Digit , ( "-" | "?" | ">" | "!" | ":" | "=" ) ;
 
-MacroToken       = ">www"  | ">w3" 
-                 | ">step" | ">%" 
-                 | ">test" | ">="
-                 | "-sudo" | "-$"
-                 | "=chat" | "=?" 
-                 | "=min"  | "=-" 
-                 | "=max"  | "=+" 
-                 | "=@" , LanguageCode ;
+MacroToken       = ( ( ( 1*">" | ( Digit , ">" ) ) , ( "www" | "w" | "step" | "%" | "test" | "=" | "time" | "t" ) )
+                   | ( ( 1*"-" | ( Digit , "-" ) ) , ( "chrome" | "//" | "sudo" | "$" ) )
+                   | ( ( 1*"=" | ( Digit , "=" ) ) , ( "chat" | "?" | "min" | "-" | "max" | "+" | ( "&" , LanguageCode ) ) ) )
+                 , [ "." ] ;
 
 LanguageCode     = 2*Letter ;
 Letter           = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" 
@@ -194,6 +204,7 @@ Letter           = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i"
                  | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" ;
 
 BlockPayload     = "~~~" , Newline , { BlockLine } , "~~~" , Newline ;
+BlankLine        = { Space } , Newline ;
 Digit            = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 Space            = " " | "\t" ;
 Newline          = "\n" | "\r\n" ;

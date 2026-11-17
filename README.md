@@ -5,7 +5,7 @@
 # **CAPS: Cognitive AI Prompt Syntax**
 ### *A Symbolic, Hierarchical DSL & Cognitive Framework for Deterministic Human-to-AI Interaction*
 
-[![Specification Version](https://img.shields.io/badge/specification-v1.0.0-blue?style=flat-square)](CAPS-DSL.md)
+[![Specification Version](https://img.shields.io/badge/specification-v1.1.0-blue?style=flat-square)](CAPS-DSL.md)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-lightgrey?style=flat-square)](LICENSE)
 
 **CAPS (Cognitive AI Prompt Syntax)** is a declarative, asymmetric, write-only Domain-Specific Language (DSL) and human-to-agent communication protocol engineered to maximize intent precision, token efficiency, and deterministic parsing in Large Language Model (LLM) workflows.
@@ -31,21 +31,25 @@
 | `!` | **ERROR / SYMPTOM** | Bugs, exceptions, stack traces, or broken behavior to diagnose/resolve. |
 | `:` | **BEFORE** | Input pattern, reference code, or initial state prior to modification. |
 | `=` | **AFTER / RESULT** | Output pattern, target state, or desired transformation result. |
-| `///` | **BOUNDARY / NEW** | Hard logical break confirming the previous task is complete and resetting context. |
+| `///` | **TOPIC / MILESTONE BOUNDARY** | Establishes the overarching **Prime Topic** at session start, or confirms the previous **Sub-Topic** is completed and initiates a new **Sub-Topic** mid-session. |
 | `~~~` | **BLOCK FENCE** | Encloses multi-line literal payloads (code, logs, configs) inheriting the parent node's scope. |
 
 ### Operational Shorthand Macros
 
-| Macro | Alias | Meaning |
-| :--- | :--- | :--- |
-| `>www` | `>w3` | **Web Search:** Actively search the web for current, authoritative information. |
-| `>step` | `>%` | **Step-by-Step:** Proceed interactively one step at a time, pausing for confirmation. |
-| `>test` | `>=` | **Empirical Test:** Verify the solution empirically (tests, syntax checks, state inspection). |
-| `-sudo` | `-$` | **Elevated Access:** Full administrative (`sudo`/`root`) privileges are granted. |
-| `=chat` | `=?` | **Advisory / Chat Only:** Read-only mode; analyze and propose without modifying state. |
-| `=min` | `=-` | **Minimal Output:** Omit explanations; output only the direct answer or code block. |
-| `=max` | `=+` | **Deep Mechanics:** Provide an exhaustive breakdown explaining underlying mechanics and "Why". |
-| `=@{lang}` | — | **Target Language:** Force output generation in the specified ISO 639-1 language (e.g., `=@cs`, `=@de`). |
+| Macro | Alias | Validity Scope | Meaning |
+| :--- | :--- | :--- | :--- |
+| `>www` | `>w` | `Single Turn` | **Web Search:** Actively search the web for current, authoritative information. |
+| `>step` | `>%` | `Entire Session` | **Step-by-Step:** Proceed interactively one step at a time, pausing for confirmation. |
+| `>test` | `>=` | `Single Turn` | **Empirical Test:** Verify the solution empirically (tests, syntax checks, state inspection). |
+| `>time` | `>t` | `Entire Session` | **Response Timestamp:** Append the current local timestamp (`YYYY-MM-DD HH:MM:SS`) to the end of the response. |
+| `-chrome` | `-//` | `Entire Session` | **Browser CDP Access:** Live Chrome CDP session available; autonomously connect when browser inspection/interaction is needed. |
+| `-sudo` | `-$` | `Entire Session` | **Elevated Access:** Full administrative (`sudo`/`root`) privileges are granted. |
+| `=chat` | `=?` | `Single Turn` | **Advisory / Chat Only:** Read-only mode; analyze and propose without modifying state. |
+| `=min` | `=-` | `Single Turn` | **Minimal Output:** Omit explanations; output only the direct answer or code block. |
+| `=max` | `=+` | `Single Turn` | **Deep Mechanics:** Provide an exhaustive breakdown explaining underlying mechanics and "Why". |
+| `=&{lang}` | — | `Entire Session` | **Target Language:** Force output generation in the specified ISO 639-1 language (e.g., `=&cs`, `=&de`). |
+
+> **Deactivation & Suppression (`.` Suffix):** Appending a trailing dot (`.`) to any macro or alias turns it **OFF** or **suppresses** its behavior—deactivating an active `Entire Session` indicator from that turn forward until re-enabled (e.g., `>t.`, `>%.`), locking out a session capability (`-$.` = *"Do not use `sudo`"*, `-//.` = *"Do not connect to Chrome"*), or suppressing a `Single Turn` action/mode for the current turn or nested subtree (`>w.` = *"Do not search the web"*, `>=.` = *"Do not run empirical tests"*).
 
 ---
 
