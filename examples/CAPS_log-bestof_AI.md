@@ -4,13 +4,14 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for AI engineer
 
 ---
 
+```text
 ///
 - I want to build a simple landing page for my project 'ABC'
 -- I want to use an LLM-EXP model for the planning phase and then switch to LLM-REG for implementation
 ??? Is it a good idea?
 ??? Which LLM-EXP reasoning effort is appropriate/sufficient for this kind of task (low, medium, high)?
 =?
->w3
+>w
 
 
 
@@ -40,7 +41,8 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for AI engineer
 == this AI agent should be active only within the scope of the folder /home/user/Documents/Personal/RealEstate
 ?? It could probably be defined with similar instructions as the custom Gem agent (final hybrid)
 ? I have never set up such a specialized agent in the system before and I do not know the optimal approach
->w3 (find the current/modern way to create and manage such an agent in the Antigravity environment)
+> Find the current/modern way to create and manage such an agent in the Antigravity environment
+>>w
 -- I assume the principle will be similar for other platforms like Claude Code (Anthropic) or Codex (ChatGPT)
 
 
@@ -106,6 +108,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for AI engineer
 ---- https://geminicli.com/docs/hooks/reference/
 ---- https://geminicli.com/docs/hooks/writing-hooks/
 - Sometimes the agent asks me for confirmation of an action (e.g. writing to a file)
->> I want to create a new Gemini CLI Hook that raises an OS-level notification
+>> create a Gemini CLI Hook that raises an OS-level notification
 --- it is usually displayed as a small popup window below the OS top bar
 :::: e.g. Google Calendar notification, update notification, etc.
+```

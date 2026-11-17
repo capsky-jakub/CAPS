@@ -36,20 +36,24 @@
 
 ### Operational Shorthand Macros
 
-| Macro | Alias | Validity Scope | Meaning |
+| Macro | Alias | Scope | Meaning |
 | :--- | :--- | :--- | :--- |
-| `>www` | `>w` | `Single Turn` | **Web Search:** Actively search the web for current, authoritative information. |
-| `>step` | `>%` | `Entire Session` | **Step-by-Step:** Proceed interactively one step at a time, pausing for confirmation. |
-| `>test` | `>=` | `Single Turn` | **Empirical Test:** Verify the solution empirically (tests, syntax checks, state inspection). |
-| `>time` | `>t` | `Entire Session` | **Response Timestamp:** Append the current local timestamp (`YYYY-MM-DD HH:MM:SS`) to the end of the response. |
-| `-chrome` | `-//` | `Entire Session` | **Browser CDP Access:** Live Chrome CDP session available; autonomously connect when browser inspection/interaction is needed. |
-| `-sudo` | `-$` | `Entire Session` | **Elevated Access:** Full administrative (`sudo`/`root`) privileges are granted. |
-| `=chat` | `=?` | `Single Turn` | **Advisory / Chat Only:** Read-only mode; analyze and propose without modifying state. |
-| `=min` | `=-` | `Single Turn` | **Minimal Output:** Omit explanations; output only the direct answer or code block. |
-| `=max` | `=+` | `Single Turn` | **Deep Mechanics:** Provide an exhaustive breakdown explaining underlying mechanics and "Why". |
-| `=&{lang}` | — | `Entire Session` | **Target Language:** Force output generation in the specified ISO 639-1 language (e.g., `=&cs`, `=&de`). |
+| `>www` | `>w` | `Turn` | **Web Search:** Search the web for current, authoritative info. |
+| `>test` | `>=` | `Turn` | **Empirical Test:** Run tests, syntax checks, or state inspection. |
+| `=chat` | `=?` | `Turn` | **Advisory Only:** Read-only analysis; do not modify files or state. |
+| `=min` | `=-` | `Turn` | **Minimal Output:** Direct answer or code only, no explanations. |
+| `=max` | `=+` | `Turn` | **Deep Mechanics:** Exhaustive breakdown of edge cases and *"Why"*. |
+| `>step` | `>%` | **`Session`** | **Step-by-Step:** Pause for confirmation after each step. |
+| `>time` | `>t` | **`Session`** | **Timestamp:** Append local `YYYY-MM-DD HH:MM:SS` to responses. |
+| `-chrome` | `-//` | **`Session`** | **Browser CDP:** Connect to live Chrome CDP session when needed. |
+| `-sudo` | `-$` | **`Session`** | **Elevated Access:** Full `sudo`/`root` privileges granted. |
+| `=&{lang}` | — | **`Session`** | **Target Language:** Force output in ISO 639-1 code (e.g., `=&cs`, `=&de`). |
 
-> **Deactivation & Suppression (`.` Suffix):** Appending a trailing dot (`.`) to any macro or alias turns it **OFF** or **suppresses** its behavior—deactivating an active `Entire Session` indicator from that turn forward until re-enabled (e.g., `>t.`, `>%.`), locking out a session capability (`-$.` = *"Do not use `sudo`"*, `-//.` = *"Do not connect to Chrome"*), or suppressing a `Single Turn` action/mode for the current turn or nested subtree (`>w.` = *"Do not search the web"*, `>=.` = *"Do not run empirical tests"*).
+> **Scope & Negation (`.` Suffix):**
+> * `Turn` applies to the current prompt (or nested subtree); `Session` persists across `///` boundaries.
+> * Append `.` to turn **OFF** or **suppress** a macro:
+>   * On `Session` macros: deactivates or locks out (`>t.`, `>%.`, `-$.` = *no `sudo`*, `-//.` = *no Chrome*).
+>   * On `Turn` macros: suppresses for this turn/subtree (`>w.` = *no web search*, `>=.` = *skip tests*).
 
 ---
 
@@ -61,13 +65,13 @@
 * **[LICENSE](LICENSE)** — Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`) license text.
 * **[assets/](assets/)** — Official CAPS brand assets in vector ([caps-logo.svg](assets/caps-logo.svg)) and full-resolution raster ([caps-logo.png](assets/caps-logo.png)) formats.
 * **[examples/](examples/)** — Curated, anonymized real-world CAPS prompts across 7 domains:
-  * [AI Engineering & Agent Orchestration](examples/CAPS_log-bestof_AI.md)
-  * [Linux & OS Administration](examples/CAPS_log-bestof_Linux.md)
-  * [Personal & Legal Workflows](examples/CAPS_log-bestof_Personal.md)
-  * [Python Automation & Document Processing](examples/CAPS_log-bestof_Python.md)
-  * [SAP Enterprise Development (ABAP Cloud, RAP, CDS, Fiori, BTP)](examples/CAPS_log-bestof_SAP.md)
-  * [Shell Scripting & CLI Utilities](examples/CAPS_log-bestof_Shell.md)
-  * [Web, Cloud & Firebase Development](examples/CAPS_log-bestof_Web.md)
+  * [AI Engineering & Agent Orchestration](examples/CAPS_log-bestof_AI.md?plain=1)
+  * [Linux & OS Administration](examples/CAPS_log-bestof_Linux.md?plain=1)
+  * [Personal & Legal Workflows](examples/CAPS_log-bestof_Personal.md?plain=1)
+  * [Python Automation & Document Processing](examples/CAPS_log-bestof_Python.md?plain=1)
+  * [SAP Enterprise Development (ABAP Cloud, RAP, CDS, Fiori, BTP)](examples/CAPS_log-bestof_SAP.md?plain=1)
+  * [Shell Scripting & CLI Utilities](examples/CAPS_log-bestof_Shell.md?plain=1)
+  * [Web, Cloud & Firebase Development](examples/CAPS_log-bestof_Web.md?plain=1)
 
 ---
 

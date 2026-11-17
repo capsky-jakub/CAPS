@@ -4,6 +4,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for full-stack 
 
 ---
 
+```text
 /// General antihack kill-switch
 - A situation may occur where the official website (https://myapp.web.app/) or its GCP/Firebase API comes under a hacker attack (DDoS, etc.)
 > Create a global kill-switch (script)
@@ -60,3 +61,4 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for full-stack 
 ??? if I performed the sequence "1. Legacy web IDE push to GitHub, 2. pull from GitHub to my local repository", would it completely overwrite my newest local version with the older snapshot?
 >>> I need to prevent this overwrite behavior
 ???? What about creating a new independent git branch for my local git repo and GitHub so it can never be affected by cloud-ide.example.com?
+```

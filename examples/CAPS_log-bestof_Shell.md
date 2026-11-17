@@ -4,6 +4,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Bash/Zsh sc
 
 ---
 
+```text
 /// New tool
 = to have a new tool/command 'myconv_raw' that:
 == searches the current working directory (pwd) and converts all found .docx files into .md
@@ -86,10 +87,10 @@ I will list our current permission grants to see what directories and tools we h
 * **Verification:** Correlated dynamic high-ports (IPC for Antigravity tools), local gsconnect sessions (port 1716), and systemd timers (user-defined backup/sync automations), validating all
 ~~~
 = 'myscanhack' works fine, but I would like it to be automated the same way as 'myscanpers' is
-== 1. autorun - new user or system systemd service scheduled daily at 12:30
-== 2. log into journald - if the agent detects a threat (malware), it will log a message into journald with the group/tag MY_LOG_SECURITY_THREAT
+-- 1. autorun - new user or system systemd service scheduled daily at 12:30
+-- 2. log into journald - if the agent detects a threat (malware), it will log a message into journald with the group/tag MY_LOG_SECURITY_THREAT
 ??? I have an idea to instruct the agent to call an external script in /home/user/Dev/Shell/System/myscanhack_log_threat, intended only for logging purposes so we do not have to move the existing /home/user/Dev/AI/Tools/.agents/skills/myscanhack/scripts/gather.sh
-== 3. Zsh notification - terminal alerts on startup if an existing log entry with MY_LOG_SECURITY_THREAT is found
+-- 3. Zsh notification - terminal alerts on startup if an existing log entry with MY_LOG_SECURITY_THREAT is found
 
 
 
@@ -136,3 +137,4 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')|$ETYPE|$EPATH" >> "$HOME/.local/state/lsyncd/
 >>>>> You can add more information (up to the 200-char limit) if you consider it beneficial
 --- I do not have an exact design in mind for the detailed display mode structure
 ---- Design it your own way
+```

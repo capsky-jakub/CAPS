@@ -9,7 +9,7 @@
 * **Language Paradigm:** Declarative, Asymmetric, Write-Only Domain-Specific Language (DSL).
 * **Core Objective:** Eliminate conversational noise, intent ambiguity, and context drift by transforming unstructured human thought into a deterministic Abstract Syntax Tree (AST) for Large Language Model (LLM) attention mechanisms.
 * **Asymmetric Design Contract:** CAPS is strictly a **human-to-agent** input protocol. The human prompts using CAPS syntax; the AI agent parses CAPS deterministically and responds in standard natural language and GitHub-Flavored Markdown (never in CAPS syntax).
-* **Theoretical Foundation (Attention Anchoring):** Standard conversational prose produces soft, diffuse self-attention ($Q \times K^T$) distributions where models must infer intent. CAPS symbols act as high-contrast semantic anchors that mathematically separate lookup context (`-`), actionable directives (`>`), queries or doubts (`?`), diagnostic errors (`!`), and state transforms (`:` $\rightarrow$ `=`).
+* **Theoretical Foundation (Attention Anchoring):** Standard conversational prose produces soft, diffuse self-attention ($Q \times K^T$) distributions where models must infer intent. CAPS symbols act as high-contrast semantic anchors that explicitly separate lookup context (`-`), actionable directives (`>`), queries or doubts (`?`), diagnostic errors (`!`), and state transforms (`:` $\rightarrow$ `=`).
 
 ---
 

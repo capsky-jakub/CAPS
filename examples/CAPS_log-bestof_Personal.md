@@ -4,8 +4,9 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for non-coding 
 
 ---
 
+```text
 /// Review of the current lease agreement version
-=@cs
+=&cs
 - I have a residential lease agreement for my apartment that I have been using since around 2020
 -- I drafted it myself back then, based on my own knowledge and templates from the internet
 - I concluded the lease agreement with my current tenant for a fixed term (1 year) and we will soon be signing the 6th amendment for the next term
@@ -16,3 +17,4 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for non-coding 
 -- I assume that since 2020 there may have been legislative reforms, Civil Code amendments, new decrees, ..., etc.
 = if possible and reasonable, categorize any findings by severity (from critical to minor)
 = the goal is to preserve the current wording and structure of the contract as much as possible and make only strictly necessary adjustments (= fix serious/critical legal deficiencies)
+```

@@ -4,6 +4,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 
 ---
 
+```text
 /// Firefox
 ? I should have both versions: APT and Snap
 == I want to keep them both
@@ -60,7 +61,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 - I have not noticed any new significant/handy UI improvements or features
 ?? Does the new version come with other enhancements and features that I might appreciate?
 --- I am especially curious about UI and window/desktop controls
->w3
+>w
 
 
 
@@ -69,7 +70,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 -- Instead, I have my own scheduling mechanism based on systemd timers and the script @backup_local.sh
 - I noticed that after a few months there are dozens of old snapshots that will probably never be needed
 = Keep only a predefined number of the latest snapshots
->w3
+>w
 
 
 
@@ -100,5 +101,6 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 -- Desktop Linux distributions often include default background services and daemons that I may not need, causing higher resource consumption
 >>> check it out
 > Scan my system and recommend actions if possible
->w3
+>w
 == Stability FIRST: I do not want to risk system failures for a 0.000001% speed gain
+```

@@ -4,9 +4,10 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 
 ---
 
+```text
 /// VSCode installation
 -$
->w3
+>w
 > Install VSCode with Antigravity and the following plugins/extensions:
 -- Antigravity IDE extensions
 --- https://antigravity.google/docs/ide/extensions/
@@ -25,7 +26,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 === only if backend (CDS, OData, Fiori) artifacts were changed (/home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/RAP)
 ---- there is no need to run 'mygit_locrem_s4_travel' for local changes (/home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/FIORI)
 ?? Not sure about a proper skill name
---- what about 'myexp...', 'mysync...', ...
+??? what about 'myexp...', 'mysync...', ...
 ?? Not sure if the new skill should be mentioned/referenced in GEMINI.md or another rule file
 --- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/GEMINI.md
 --- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/.agents/rules/rap.md
@@ -54,7 +55,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 > Hide the column "Changed by" on the main list page
 -- you can utilize registered skills related to SAP (RAP, CDS, etc.) before starting analysis/design/implementation
 --- in case you get lost and cannot find the right solution, activate 'mysap_jit_skills'
->>w3
+>>w
 > Do not test it (I will test it manually)
 > Do not change artifacts in the @[FIORI] repo
 -- the task should be feasible just by editing a few text files inside the @[RAP] repo
@@ -83,7 +84,9 @@ c. In addition your application allows you to upload pictures of type jpg and pn
 - I have created a new cloud project in my desktop IDE
 -- When I try to open this project, an IDE popup 'Logon for project...' appears with a button "Open Logon page in browser"
 --- I clicked the button and another browser popup 'Sign in' appears with the link:
+~~~
 https://00000000-0000-0000-0000-000000000000.cloud-env.example.com/auth/reentranceticket?redirect-url=http%3A%2F%2Flocalhost%3A34163%2Fide%2Fredirect&_=12345678901234
+~~~
 ---- Even though I use the same web console credentials, they are not accepted and the browser popup appears again
 ----- I am unable to log in...
 
@@ -95,3 +98,4 @@ https://00000000-0000-0000-0000-000000000000.cloud-env.example.com/auth/reentran
 --- I expect I acquired new account IDs, etc.
 > Review/validate all my CLI tools and context information
 -- I have already successfully connected the Eclipse cloud project with service key @...
+```

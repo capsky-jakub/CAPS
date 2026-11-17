@@ -4,6 +4,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Python tool
 
 ---
 
+```text
 ///
 > Install these 3 tools: pandoc, docling, mammoth-cli
 >> check if they are already present on my system
@@ -39,7 +40,6 @@ mammoth is /home/user/.local/share/mise/installs/python/3.14.2/bin/mammoth
 
 
 ///
-- nice
 - Other improvement ideas for the recording .yaml file:
 ?? What if we strip/remove the event value labels "key:, action:, delay_ms:" and rely on fixed positions in the list?
 ?? What if we strip/remove the key value prefix "KEY_"?
@@ -57,10 +57,10 @@ events:
 ==
 ~~~
 events:
-- {LEFTMETA        down      0}
-- {LEFTMETA        up      90}
-- {C             down      1470}
-- {C             up      111}
+- {LEFTMETA     down        0}
+- {LEFTMETA     up         90}
+- {C            down     1470}
+- {C            up        111}
 ~~~
 
 
@@ -95,7 +95,7 @@ events:
 --- e.g. the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
 == among other things, there should also be a simple config file for adjusting/setting useful parameters/options
 --- e.g. output/target file destination, extra/additional delay between keyboard shortcuts (hotkeys), ..., etc.
->w3
+>w
 
 
 
@@ -143,6 +143,7 @@ SAP-Help_documentation-specification/distilled/RAP_ODATA/Transactional Behavior 
 --- 1st level - .md file heading "### {number}. {dirname}"
 --- 2nd level - .md file list entries below the "###" heading matching "* **{dirname}**"
 === e.g. "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/_MASTER_INDEX.md" should create dirs:
+::::
 ~~~
 /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling
 /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/Table Entities
@@ -154,6 +155,7 @@ SAP-Help_documentation-specification/distilled/RAP_ODATA/Transactional Behavior 
 ...
 etc.
 ~~~
+====
 ~~~
 /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____Table Entities
 /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____View Entities
@@ -171,3 +173,4 @@ etc.
 >> create a new separate dir for each .docx file with the same name as the .docx file (without the .docx suffix)
 >>> move the .docx file into its respective/eponymous dir
 === e.g. the file "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture.docx" will be moved to the new dir "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture/"
+```
