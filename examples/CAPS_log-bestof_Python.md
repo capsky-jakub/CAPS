@@ -75,6 +75,9 @@ events:
 
 
 /// Keypress recorder/replayer
+-$
+>w
+=?
 - I have 2 external monitors connected to my laptop
 - I work with several virtual desktops (workspaces) and usually have 2-3 windows on each monitor
 -- Each app window has its fixed position
@@ -95,7 +98,6 @@ events:
 --- e.g. the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
 == among other things, there should also be a simple config file for adjusting/setting useful parameters/options
 --- e.g. output/target file destination, extra/additional delay between keyboard shortcuts (hotkeys), ..., etc.
->w
 
 
 

@@ -16,29 +16,24 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 
 /// Free drive space
 -$
+=?
 - Not long ago (a few weeks ago) I remember having around 180GB of free space on the system drive, and now there is 150GB
 ?? What happened?
 > Check the system for stale/expendable/cached/residual files that can be safely deleted
 -- you can use my utility:
 ~~~
-➜  ~ mysize_big           
+➜  ~ capsize_big           
 51G    total
 17G    Dev
-8.7G    .cache
-7.5G    .local
-5.8G    .gemini
-5.6G    .config
-2.5G    Documents
-1.6G    Downloads
-781M    .mozilla
-715M    snap
-492M    .antigravity
-491M    .antigravity-ide
-399M    .ui5
-237M    sap
-82M    SoftMaker
+8.7G   .cache
+7.5G   .local
+5.6G   .config
+2.5G   Documents
+1.6G   Downloads
+781M   .mozilla
+715M   snap
+399M   .ui5
 ~~~
-=?
 
 
 

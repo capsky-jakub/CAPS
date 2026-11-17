@@ -57,6 +57,90 @@
 
 ---
 
+## Examples
+
+Authentic real-world CAPS prompts showing how baseline context, execution controls, multi-line requirements, scoped constraints, and open questions fit into a deterministic hierarchy.
+
+### SW
+
+```text
+/// Keypress Recorder/Replayer
+-$
+>w
+=?
+- I have 2 external monitors connected to my laptop
+- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
+-- Each app window has a fixed position
+-- Arranging all workspaces and windows usually takes a few minutes
+--- I do this using many different keyboard shortcuts (hotkeys)
+---- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
+--- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
+= A terminal tool (or set of tools) that:
+~~~
+1. records my keyboard input sequence
+2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
+3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
+~~~
+?? I guess a Python script is the best fit here
+== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
+--- Except system interrupt combinations like "Ctrl+C", of course
+== The tool should preserve the exact delay between every key or hotkey
+--- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
+== There should also be a simple config file for adjusting key parameters and options
+--- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
+```
+
+### OS
+
+```text
+/// Free Drive Space
+-$
+=?
+- A few weeks ago, I had around 180 GB of free space on the system drive, and now there is 150 GB
+?? What happened?
+> Check the system for stale/expendable/cached/residual files that can be safely deleted
+-- You can use my utility:
+~~~
+➜  ~ capsize_big           
+51G    total
+17G    Dev
+8.7G   .cache
+7.5G   .local
+5.6G   .config
+2.5G   Documents
+1.6G   Downloads
+781M   .mozilla
+715M   snap
+399M   .ui5
+~~~
+```
+
+### Law / Subagents
+
+```text
+/// New Agent "Lawyer (Real Estate Specialist)"
+- I have several folders on my system for real estate administration
+-- Mostly lease agreements
+-- They contain contracts, amendments, etc.
+--- Mostly in .docx format, but I have prepared a workflow using "_raw" subfolders that will contain conversions of these .docx files into clean .md (Markdown)
+= A specialized AI agent with the role of a lawyer specializing in real estate and related transactions
+== This AI agent should be active only within the scope of the folder /home/user/Documents/RealEstate
+?? It could probably be defined with instructions similar to the custom Gem agent (final hybrid)
+? I have never set up such a specialized agent on the system before and do not know the optimal approach
+> Find the current/modern way to create and manage such an agent in the Antigravity environment
+>>w
+?? I assume the principle will be similar for other platforms like LLM-frontier2 or LLM-frontier3
+```
+
+### Key Takeaways
+
+* **Deterministic Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
+* **Strict Scope Isolation (`-` → `----`, `=` → `---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
+* **Block Inheritance (`~~~`):** Multi-line specifications (*SW*) and terminal outputs (*OS*) inherit their parent node's scope (`=` or `--`) without repeating prefixes on every line.
+* **More Examples:** See [CAPS-DSL.md](CAPS-DSL.md) (including `!` error symptoms and `:` → `=` code transitions) and the 7 domain showcases in [examples/](examples/).
+
+---
+
 ## Repository Structure
 
 * **[CAPS-DSL.md](CAPS-DSL.md)** — The full canonical RFC-style specification, including architectural foundations, lexical rules, multi-domain integration examples, and the formal ISO/IEC 14977 EBNF grammar.
