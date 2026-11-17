@@ -72,12 +72,29 @@ For multi-line payloads (code snippets, file excerpts, logs) that belong to a si
 
 ## **4. Example**
 
-> Create a JavaScript fetch utility for a weather API
--- Target API Endpoint: https://api.weather.com/v3/forecast
->> Do not use third-party libraries like Axios; stick to the native Fetch API
-> Design the HTML widget layout to display the current weather
--- Required fields: Temperature, Humidity, and a dynamic weather icon
-> Write the CSS to style the widget as a floating card
--- The card must be fixed to the bottom-right corner of the viewport
--- Use a glassmorphism effect (backdrop-filter)
-? How should we handle API rate-limiting errors gracefully?
+```text
+/// Keypress Recorder/Replayer
+-$
+>w
+=?
+- I have 2 external monitors connected to my laptop
+- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
+-- Each app window has a fixed position
+-- Arranging all workspaces and windows usually takes a few minutes
+--- I do this using many different keyboard shortcuts (hotkeys)
+---- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
+--- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
+= A terminal tool (or set of tools) that:
+~~~
+1. records my keyboard input sequence
+2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
+3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
+~~~
+?? I guess a Python script is the best fit here
+== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
+--- Except system interrupt combinations like "Ctrl+C", of course
+== The tool should preserve the exact delay between every key or hotkey
+--- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
+== There should also be a simple config file for adjusting key parameters and options
+--- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
+```
