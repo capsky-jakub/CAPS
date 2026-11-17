@@ -149,13 +149,13 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 * **[LICENSE](LICENSE)** — Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`) license text.
 * **[assets/](assets/)** — Official CAPS brand assets in vector ([caps-logo.svg](assets/caps-logo.svg)) and full-resolution raster ([caps-logo.png](assets/caps-logo.png)) formats.
 * **[examples/](examples/)** — Curated, anonymized real-world CAPS prompts across 7 domains:
-  * [AI Engineering & Agent Orchestration](examples/CAPS_log-bestof_AI.md?plain=1)
-  * [Linux & OS Administration](examples/CAPS_log-bestof_Linux.md?plain=1)
-  * [Personal & Legal Workflows](examples/CAPS_log-bestof_Personal.md?plain=1)
-  * [Python Automation & Document Processing](examples/CAPS_log-bestof_Python.md?plain=1)
-  * [SAP Enterprise Development (ABAP Cloud, RAP, CDS, Fiori, BTP)](examples/CAPS_log-bestof_SAP.md?plain=1)
-  * [Shell Scripting & CLI Utilities](examples/CAPS_log-bestof_Shell.md?plain=1)
-  * [Web, Cloud & Firebase Development](examples/CAPS_log-bestof_Web.md?plain=1)
+  * [AI Engineering & Agent Orchestration](examples/CAPS_log-bestof_AI.md)
+  * [Linux & OS Administration](examples/CAPS_log-bestof_Linux.md)
+  * [Personal & Legal Workflows](examples/CAPS_log-bestof_Personal.md)
+  * [Python Automation & Document Processing](examples/CAPS_log-bestof_Python.md)
+  * [SAP Enterprise Development (ABAP Cloud, RAP, CDS, Fiori, BTP)](examples/CAPS_log-bestof_SAP.md)
+  * [Shell Scripting & CLI Utilities](examples/CAPS_log-bestof_Shell.md)
+  * [Web, Cloud & Firebase Development](examples/CAPS_log-bestof_Web.md)
 
 ---
 

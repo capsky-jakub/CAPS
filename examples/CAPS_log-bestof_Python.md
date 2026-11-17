@@ -74,30 +74,30 @@ events:
 
 
 
-/// Keypress recorder/replayer
+/// Keypress Recorder/Replayer
 -$
 >w
 =?
 - I have 2 external monitors connected to my laptop
-- I work with several virtual desktops (workspaces) and usually have 2-3 windows on each monitor
--- Each app window has its fixed position
+- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
+-- Each app window has a fixed position
 -- Arranging all workspaces and windows usually takes a few minutes
 --- I do this using many different keyboard shortcuts (hotkeys)
----- e.g. placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
---- Every time I reboot the system, I spend several minutes restoring my workspaces, which is very annoying and inefficient
-= to have a terminal tool (or set of tools) that:
+---- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
+--- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
+= A terminal tool (or set of tools) that:
 ~~~
 1. records my keyboard input sequence
-2. saves the sequence to a file with a user-specified name (e.g. "sap_session")
-3. replays/executes the sequence on demand so the workspaces/windows are arranged the exact same way as if I opened and placed them manually
+2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
+3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
 ~~~
-?? I guess the best platform is a Python script
-== the tool must be able to record/replay all kinds of keys and keyboard shortcuts
---- except system interrupt ones like "Ctrl+C", of course
-== the tool should respect/preserve the delay between every single key or hotkey
---- e.g. the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
-== among other things, there should also be a simple config file for adjusting/setting useful parameters/options
---- e.g. output/target file destination, extra/additional delay between keyboard shortcuts (hotkeys), ..., etc.
+?? I guess a Python script is the best fit here
+== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
+--- Except system interrupt combinations like "Ctrl+C", of course
+== The tool should preserve the exact delay between every key or hotkey
+--- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
+== There should also be a simple config file for adjusting key parameters and options
+--- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
 
 
 
@@ -106,32 +106,32 @@ events:
 > replace all spaces in all [paths.docu_roots] subdirs with '_'
 ::
 ~~~
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Access Control and Security/Data Control Language (DCL)
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Access Control and Security/Data Control Language (DCL)
 ~~~
 ==
 ~~~
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Access_Control_and_Security/Data_Control_Language_(DCL)
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Access_Control_and_Security/Data_Control_Language_(DCL)
 ~~~
 
 
 
 /// Next related task
 > Try moving each .docx/.md file to its designated/related dir by matching a substring of the dirname with the Markdown heading
--- e.g. /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/RAP_ODATA/Feature and Authorization Management in ABAP RAP.md contains:
+-- e.g. /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/RAP_ODATA/Feature and Authorization Management in ABAP RAP.md contains:
 ~~~
 # STUDY MANUAL: Feature Control & Authorization Control
 ~~~
 --- the heading "Feature Control & Authorization Control" (after "STUDY MANUAL:") also exists as part of the dirname:
 ~~~
-SAP-Help_documentation-specification/distilled/RAP_ODATA/Transactional Behavior and Business Logic (Behavior Definition & Pool)_____Feature Control & Authorization Control/
+ABAP_Study_Notes/distilled/RAP_ODATA/Transactional Behavior and Business Logic (Behavior Definition & Pool)_____Feature Control & Authorization Control/
 ~~~
-== so both 'Feature and Authorization Management in ABAP RAP.*' files are moved into 'SAP-Help_documentation-specification/distilled/RAP_ODATA/Transactional Behavior and Business Logic (Behavior Definition & Pool)_____Feature Control & Authorization Control/'
+== so both 'Feature and Authorization Management in ABAP RAP.*' files are moved into 'ABAP_Study_Notes/distilled/RAP_ODATA/Transactional Behavior and Business Logic (Behavior Definition & Pool)_____Feature Control & Authorization Control/'
 >> if there is no string match, do not move anything and leave the unmatched files in place
 
 
 
 /// New related task
-- there are many .docx files in /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled
+- there are many .docx files in /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled
 >> Convert each .docx file into Markdown (.md) format
 === The .md file will have the same base name with the .md suffix
 >>> Do not delete the original .docx file
@@ -140,30 +140,30 @@ SAP-Help_documentation-specification/distilled/RAP_ODATA/Transactional Behavior 
 
 
 /// New task
-- there are a few _MASTER_INDEX.md files inside /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled
+- there are a few _MASTER_INDEX.md files inside /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled
 >> create a new dir-tree/dir-structure for each .md file following the logic below:
 --- 1st level - .md file heading "### {number}. {dirname}"
 --- 2nd level - .md file list entries below the "###" heading matching "* **{dirname}**"
-=== e.g. "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/_MASTER_INDEX.md" should create dirs:
+=== e.g. "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/_MASTER_INDEX.md" should create dirs:
 ::::
 ~~~
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/Table Entities
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/View Entities
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/Projection Views
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/Table Entities
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/View Entities
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling/Projection Views
 ...
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Advanced Modeling of Relationships and Queries
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Advanced Modeling of Relationships and Queries/Associations
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Advanced Modeling of Relationships and Queries
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Advanced Modeling of Relationships and Queries/Associations
 ...
 etc.
 ~~~
 ====
 ~~~
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____Table Entities
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____View Entities
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____Projection Views
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____Table Entities
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____View Entities
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Core Data Services (CDS) and Modern Data Modeling_____Projection Views
 ...
-/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/CDS/Advanced Modeling of Relationships and Queries_____Associations
+/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/CDS/Advanced Modeling of Relationships and Queries_____Associations
 ...
 etc.
 ~~~
@@ -171,8 +171,8 @@ etc.
 
 
 /// New task
-- there are many .docx files inside /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled
+- there are many .docx files inside /home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled
 >> create a new separate dir for each .docx file with the same name as the .docx file (without the .docx suffix)
 >>> move the .docx file into its respective/eponymous dir
-=== e.g. the file "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture.docx" will be moved to the new dir "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/SAP-Help_documentation-specification/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture/"
+=== e.g. the file "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture.docx" will be moved to the new dir "/home/user/Dev/SAPDEV/Technology/ABAP_Cloud/ABAP_Study_Notes/distilled/RAP_ODATA/Study Manual_ ABAP RAP Architecture/"
 ```

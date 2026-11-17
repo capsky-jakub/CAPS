@@ -7,9 +7,9 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for non-coding 
 ```text
 /// Review of the current lease agreement version
 =&cs
-- I have a residential lease agreement for my apartment that I have been using since around 2020
--- I drafted it myself back then, based on my own knowledge and templates from the internet
-- I concluded the lease agreement with my current tenant for a fixed term (1 year) and we will soon be signing the 6th amendment for the next term
+- I have a residential lease agreement for an apartment that has been in use since around 2020
+-- It was drafted back then based on general legal knowledge and templates from the internet
+- The lease agreement was concluded with the current tenant for a fixed term (1 year), and the 6th amendment for the next term will be signed soon
 > thoroughly verify whether the current wording of the lease agreement and all its amendments is legally sound
 ?? is anything missing from the contract that could/must be added?
 ?? is anything redundant in the contract that could/must be removed?

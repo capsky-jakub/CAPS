@@ -32,18 +32,18 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for AI engineer
 
 
 
-/// New agent "Lawyer (Real Estate Specialist)"
-- I have several folders in my system where I manage my real estate properties
--- mostly rentals
--- they contain contracts, amendments, etc.
---- mostly in .docx format, but I have prepared a mechanism/environment/workflow using "_raw" subfolders that will contain conversions of these .docx files into clean .md (Markdown)
-= to have a specialized AI agent with the role of a lawyer specializing in real estate and related transactions
-== this AI agent should be active only within the scope of the folder /home/user/Documents/Personal/RealEstate
-?? It could probably be defined with similar instructions as the custom Gem agent (final hybrid)
-? I have never set up such a specialized agent in the system before and I do not know the optimal approach
+/// New Agent "Lawyer (Real Estate Specialist)"
+- I have several folders on my system for real estate administration
+-- Mostly lease agreements
+-- They contain contracts, amendments, etc.
+--- Mostly in .docx format, but I have prepared a workflow using "_raw" subfolders that will contain conversions of these .docx files into clean .md (Markdown)
+= A specialized AI agent with the role of a lawyer specializing in real estate and related transactions
+== This AI agent should be active only within the scope of the folder /home/user/Documents/RealEstate
+?? It could probably be defined with instructions similar to the custom Gem agent (final hybrid)
+? I have never set up such a specialized agent on the system before and do not know the optimal approach
 > Find the current/modern way to create and manage such an agent in the Antigravity environment
 >>w
--- I assume the principle will be similar for other platforms like Claude Code (Anthropic) or Codex (ChatGPT)
+?? I assume the principle will be similar for other platforms like LLM-frontier2 or LLM-frontier3
 
 
 

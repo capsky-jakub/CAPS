@@ -84,7 +84,7 @@ I will list our current permission grants to see what directories and tools we h
 ### Summary of Actions & Results
 * **Analysis Status:** Completed. All rows of network sockets, process tables, cron directories, systemd timers/services, and shell startup configurations were manually checked.
 * **Findings:** The system is clean. No active indicators of compromise, spyware, backdoors, cryptominers, or unauthorized persistence mechanisms were detected.
-* **Verification:** Correlated dynamic high-ports (IPC for Antigravity tools), local gsconnect sessions (port 1716), and systemd timers (user-defined backup/sync automations), validating all
+* **Verification:** Correlated dynamic high-ports (IPC for Antigravity tools), local IPC sessions, and systemd timers (user-defined backup/sync automations), validating all
 ~~~
 = 'myscanhack' works fine, but I would like it to be automated the same way as 'myscanpers' is
 -- 1. autorun - new user or system systemd service scheduled daily at 12:30

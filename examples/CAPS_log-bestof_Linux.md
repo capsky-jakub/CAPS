@@ -14,13 +14,13 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 
 
 
-/// Free drive space
+/// Free Drive Space
 -$
 =?
-- Not long ago (a few weeks ago) I remember having around 180GB of free space on the system drive, and now there is 150GB
+- A few weeks ago, I had around 180 GB of free space on the system drive, and now there is 150 GB
 ?? What happened?
 > Check the system for stale/expendable/cached/residual files that can be safely deleted
--- you can use my utility:
+-- You can use my utility:
 ~~~
 ➜  ~ capsize_big           
 51G    total

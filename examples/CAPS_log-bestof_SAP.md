@@ -10,7 +10,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 >w
 > Install VSCode with Antigravity and the following plugins/extensions:
 -- Antigravity IDE extensions
---- https://antigravity.google/docs/ide/extensions/
+--- https://ide-docs.example.com/extensions/
 -- SAP Fiori tools extension
 -- ADT for Visual Studio Code
 > Do not uninstall the Antigravity IDE yet, provided it does not cause any collisions/defects/inconsistencies
