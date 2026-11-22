@@ -51,19 +51,19 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Bash/Zsh sc
 
 
 
-/// Antigravity session finder/searcher
-- I am a fairly advanced Antigravity user and I have many chats/sessions every day
-- Sometimes, when dealing with something, I remember that I already figured it out in a previous Antigravity session, but I do not remember which one
+/// LLM-frontier1 session finder/searcher
+- I am a fairly advanced LLM-frontier1 user and I have many chats/sessions every day
+- Sometimes, when dealing with something, I remember that I already figured it out in a previous LLM-frontier1 session, but I do not remember which one
 -- Usually I remember the keywords/terms/fragments used in the session
 ::: e.g. the term "GFXOFF" used in:
 ~~~
 Workspace:      ~
-Project Config: ~/.gemini/config/projects/default-cli-project.json
-Log File:       ~/.gemini/antigravity-cli/log/cli-20260724_150547.log
+Project Config: ~/.llm-frontier1/config/projects/default-cli-project.json
+Log File:       ~/.llm-frontier1/cli/log/cli-20260724_150547.log
 Conversation:   00000000-0000-0000-0000-000000000000
 ~~~
 = I want to have a command/tool 'ggfind' executable directly in the terminal (Shell script, function, Python, whatever...) that:
-== expects 1x mandatory argument 'used_term' (as a regex string) to search across all Antigravity sessions
+== expects 1x mandatory argument 'used_term' (as a regex string) to search across all LLM-frontier1 sessions
 == lists all found sessions containing 'used_term'
 === optimally the list should display: session date/time, session name, session ID
 ?? I guess a shell script would be enough
@@ -77,14 +77,14 @@ Conversation:   00000000-0000-0000-0000-000000000000
 ::: Sample run in Zsh:
 ~~~
 ➜  Tools git:(master) myscanhack 
-I will start by listing the contents of the global customizations root directory at `/home/user/.gemini/config` to see if there is any custom command or skill related to `myscanhack`.
-I will list the contents of the Antigravity application directory `/home/user/.gemini/antigravity-cli` to inspect available resources or scripts.
+I will start by listing the contents of the global customizations root directory at `/home/user/.llm-frontier1/config` to see if there is any custom command or skill related to `myscanhack`.
+I will list the contents of the LLM-frontier1 application directory `/home/user/.llm-frontier1/cli` to inspect available resources or scripts.
 I will list our current permission grants to see what directories and tools we have access to.
 ...
 ### Summary of Actions & Results
 * **Analysis Status:** Completed. All rows of network sockets, process tables, cron directories, systemd timers/services, and shell startup configurations were manually checked.
 * **Findings:** The system is clean. No active indicators of compromise, spyware, backdoors, cryptominers, or unauthorized persistence mechanisms were detected.
-* **Verification:** Correlated dynamic high-ports (IPC for Antigravity tools), local IPC sessions, and systemd timers (user-defined backup/sync automations), validating all
+* **Verification:** Correlated dynamic high-ports (IPC for LLM-frontier1 tools), local IPC sessions, and systemd timers (user-defined backup/sync automations), validating all
 ~~~
 = 'myscanhack' works fine, but I would like it to be automated the same way as 'myscanpers' is
 -- 1. autorun - new user or system systemd service scheduled daily at 12:30

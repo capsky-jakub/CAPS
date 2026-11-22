@@ -24,10 +24,10 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for full-stack 
 
 
 /// Finding optimal approach for parallel development and GitHub repository
-- I moved my main development workspace from a cloud web IDE (cloud-ide.example.com) to Antigravity a few months ago
+- I moved my main development workspace from a cloud web IDE (cloud-ide.example.com) to LLM-frontier1 a few months ago
 -- now, the legacy web IDE preserves the older version as a backup
 -- now, my local git repo keeps the newest version
---- every time I make a change in the myapp project (via Antigravity), I call my function 'mygit_equal' defined in functions.zsh to synchronize everything
+--- every time I make a change in the myapp project (via LLM-frontier1), I call my function 'mygit_equal' defined in functions.zsh to synchronize everything
 - The legacy web IDE has an option to publish to GitHub
 -- however, it performs a force push and overwrites the target main/master branch without merging
 ??? if I performed the sequence "1. Legacy web IDE push to GitHub, 2. pull from GitHub to my local repository", would it completely overwrite my newest local version with the older snapshot?

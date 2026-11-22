@@ -75,7 +75,7 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for Linux (Ubun
 --- CoolApp works stably for hours
 -- It happens after system suspend/sleep/lock when I switch to a different OS workspace (virtual desktop)
 --- I have spent many hours and tried almost everything - nothing has resolved the issue yet (e.g. AMD PSR, turning animations off, network pinging, etc.)
-> Deeply scan the project/workspace files and initialize the context file (GEMINI.md) first
+> Deeply scan the project/workspace files and initialize the context file (AGENTS.md) first
 >> Analyze mainly the previous session information and recaps
 
 

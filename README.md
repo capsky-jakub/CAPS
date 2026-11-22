@@ -224,9 +224,9 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 --- Mostly in .docx format, but I have prepared a workflow using "_raw" subfolders that will contain conversions of these .docx files into clean .md (Markdown)
 = A specialized AI agent with the role of a lawyer specializing in real estate and related transactions
 == This AI agent should be active only within the scope of the folder /home/user/Documents/RealEstate
-?? It could probably be defined with instructions similar to the custom Gem agent (final hybrid)
+?? It could probably be defined with instructions similar to the custom web agent (final hybrid)
 ? I have never set up such a specialized agent on the system before and do not know the optimal approach
-> Find the current/modern way to create and manage such an agent in the Antigravity environment
+> Find the current/modern way to create and manage such an agent in the LLM-frontier1 environment
 >>w
 ?? I assume the principle will be similar for other platforms like LLM-frontier2 or LLM-frontier3
 ```
@@ -245,7 +245,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 * **[CAPS-DSL.md](CAPS-DSL.md)** — The full canonical RFC-style specification, including architectural foundations, lexical rules, multi-domain integration examples, and the formal ISO/IEC 14977 EBNF grammar.
 * **[CAPS-DSL.txt](CAPS-DSL.txt)** — Exact plaintext mirror of `CAPS-DSL.md` for universal ingestion across tools and web interfaces.
-* **[CAPS.md](CAPS.md)** — Condensed, token-optimized specification (~8.3 KB / ~2.2K tokens, ~0.2% of a 1M context window) designed for direct embedding into AI system prompts, custom instructions, and agent rule files (e.g., `GEMINI.md`, `CLAUDE.md`, `.cursorrules`).
+* **[CAPS.md](CAPS.md)** — Condensed, token-optimized specification (~8.3 KB / ~2.2K tokens, ~0.2% of a 1M context window) designed for direct embedding into AI system prompts, custom instructions, and agent rule files (e.g., `AGENTS.md`).
 * **[LICENSE](LICENSE)** — Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`) license text.
 * **[assets/](assets/)** — Official CAPS brand assets in vector ([caps-logo.svg](assets/caps-logo.svg)) and full-resolution raster ([caps-logo.png](assets/caps-logo.png)) formats.
 * **[examples/](examples/)** — Curated, anonymized real-world CAPS prompts across 7 domains:

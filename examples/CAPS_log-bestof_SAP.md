@@ -8,17 +8,17 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 /// VSCode installation
 -$
 >w
-> Install VSCode with Antigravity and the following plugins/extensions:
--- Antigravity IDE extensions
+> Install VSCode with LLM-frontier1 and the following plugins/extensions:
+-- LLM-frontier1 IDE extensions
 --- https://ide-docs.example.com/extensions/
 -- SAP Fiori tools extension
 -- ADT for Visual Studio Code
-> Do not uninstall the Antigravity IDE yet, provided it does not cause any collisions/defects/inconsistencies
-= migration/switching my secondary IDE from Antigravity to VSCode
+> Do not uninstall the LLM-frontier1 IDE yet, provided it does not cause any collisions/defects/inconsistencies
+= migration/switching my secondary IDE from LLM-frontier1 to VSCode
 
 
 
-/// New agy skill 'my...' for local->remote synchronization
+/// New LLM-frontier1 skill 'my...' for local->remote synchronization
 - I have a working tool/command 'mygit_locrem_s4_travel' that also integrates 'mygit_xpull_adt'
 - Once the AI agent (you) finishes/completes a job/task related to backend SAP development (RAP, CDS, OData), I have to run 'mygit_locrem_s4_travel' manually in another terminal window
 = to have a new skill 'my...' that the AI agent automatically runs after completing its task
@@ -27,8 +27,8 @@ Curated real-world **CAPS (Cognitive AI Prompt Syntax)** prompts for SAP enterpr
 ---- there is no need to run 'mygit_locrem_s4_travel' for local changes (/home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/FIORI)
 ?? Not sure about a proper skill name
 ??? what about 'myexp...', 'mysync...', ...
-?? Not sure if the new skill should be mentioned/referenced in GEMINI.md or another rule file
---- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/GEMINI.md
+?? Not sure if the new skill should be mentioned/referenced in AGENTS.md or another rule file
+--- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/AGENTS.md
 --- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/.agents/rules/rap.md
 --- /home/user/Dev/SAPDEV/S4-CLI/src/DEMO_TRAVEL/.agents/rules/fiori.md
 
