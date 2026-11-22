@@ -2,11 +2,15 @@
   <img src="assets/caps-logo.svg" alt="CAPS: Cognitive AI Prompt Syntax Logo" width="460">
 </p>
 
+
 # **CAPS: Cognitive AI Prompt Syntax**
-### *A Symbolic, Hierarchical DSL & Cognitive Framework for Precise Human-to-AI Interaction*
 
 [![Specification Version](https://img.shields.io/badge/specification-v1.1.0-blue?style=flat-square)](CAPS-DSL.md)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-lightgrey?style=flat-square)](LICENSE)
+
+> ## *"Be flexible, explicit, and concise - all at once."*
+
+## The first DSL
 
 **CAPS (Cognitive AI Prompt Syntax)** is a declarative, asymmetric, write-only Domain-Specific Language (DSL) and human-to-agent communication protocol engineered to maximize intent precision, token efficiency, and explicit structure in Large Language Model (LLM) workflows.
 
@@ -14,10 +18,10 @@
 
 ## In Short...
 
-**Without CAPS** *(68 words / 406 chars)*:
-> Found a new issue. Clipboard paste via Ctrl+V stopped working, although Edit -> Paste from the menu bar still works. For context, I ran an OS update earlier today. You have `sudo` privileges to inspect system logs and diagnostics, and please search the web for any known regressions from today's update. Do not modify any files or system configuration yet—just diagnose the root cause and propose next steps.
+**Prose** *(71 words / 425 chars)*:
+> Found a new issue during our testing. Clipboard paste via Ctrl+V stopped working, although Edit -> Paste from the menu bar still works. For context, I ran an OS update earlier today. You have `sudo` privileges to inspect system logs and diagnostics, and please search the web for any known regressions from today's update. Do not modify any files or system configuration yet—just diagnose the root cause and propose next steps.
 
-**With CAPS** *(7 lines / 95 chars — 77% shorter, zero ambiguity)*:
+**CAPS** *(7 lines / 95 chars — 78% shorter, zero ambiguity)*:
 ```text
 ///
 ! Clipboard paste (Ctrl+V)
@@ -152,7 +156,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 ### Key Takeaways
 
-* **High-Density Triage & Context Reset (`///`, `!`):** A standalone `///` cleanly closes the prior sub-topic while keeping the session's active project, `!` anchors the failing symptom with a scoped diagnostic clue (`-- Edit -> Paste from menu bar works`), and `-` supplies the system-level cause (*In Short...*).
+* **Topic Framing & Context Reset (`///`):** Opening with `/// <Title>` establishes the session's prime topic, while a standalone `///` mid-session cleanly closes a completed sub-topic without losing baseline session context (`-`).
 * **Explicit Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `>w` triggers web lookup, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
 * **Strict Scope Isolation (`-` → `----`, `=` → `---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
 * **Block Inheritance (`~~~`):** Multi-line specifications (*SW*) and terminal outputs (*OS*) inherit their parent node's scope (`=` or `--`) without repeating prefixes on every line.
