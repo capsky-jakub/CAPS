@@ -143,6 +143,17 @@ JsonWebTokenError: invalid signature
         └── 3? Should getSigningKey cache keys in memory or Redis?
 ```
 
+**Prose equivalent** *(191 words / 1,326 chars — vs. 14 lines / 380 chars in CAPS)*:
+
+> Let's start a new topic on API Auth Migration (treat any previous tasks or errors as closed). For this response, operate strictly in read-only advisory mode: do not modify any files, configurations, or system state — just analyze the problem, discuss the approach, and propose a solution in the chat.
+>
+> As baseline background context, our backend environment runs on Node 22 and Express 5. The issue we need to resolve is that our legacy JWT middleware currently rejects rotated keys; specifically, the diagnostic stack trace output associated with this failure is the literal error `JsonWebTokenError: invalid signature`.
+>
+> Your primary task is to plan a migration from our static secret setup to JWKS. Specifically for this migration plan:
+> 1. Actively search the web for current, authoritative documentation and best practices, and synthesize those findings into your plan.
+> 2. Make sure the rollout strategy preserves existing active user sessions without invalidating them mid-migration.
+> 3. Frame the code transformation around refactoring our current verification call, `jwt.verify(token, SECRET)`, into the target pattern `jwt.verify(token, getSigningKey)` — and specifically regarding the `getSigningKey` implementation in that target pattern, please analyze and recommend whether it should cache keys in memory or in Redis.
+
 ---
 
 ## Examples
