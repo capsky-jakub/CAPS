@@ -1,5 +1,5 @@
 # **CAPS: Cognitive AI Prompt Syntax**
-### *Specification & Cognitive Framework for Deterministic Human-to-AI Interaction*
+### *Specification & Cognitive Framework for Precise Human-to-AI Interaction*
 **Version:** `1.1.0` | **Status:** Final / Stable | **Date:** 2026-11-17
 
 ---
@@ -7,8 +7,8 @@
 ## **0. Protocol Specification & Architecture**
 
 * **Language Paradigm:** Declarative, Asymmetric, Write-Only Domain-Specific Language (DSL).
-* **Core Objective:** Eliminate conversational noise, intent ambiguity, and context drift by transforming unstructured human thought into a deterministic Abstract Syntax Tree (AST) for Large Language Model (LLM) attention mechanisms.
-* **Asymmetric Design Contract:** CAPS is strictly a **human-to-agent** input protocol. The human prompts using CAPS syntax; the AI agent parses CAPS deterministically and responds in standard natural language and GitHub-Flavored Markdown (never in CAPS syntax).
+* **Core Objective:** Eliminate conversational noise, intent ambiguity, and context drift by transforming unstructured human thought into an explicit Abstract Syntax Tree (AST) for Large Language Model (LLM) attention mechanisms.
+* **Asymmetric Design Contract:** CAPS is strictly a **human-to-agent** input protocol. The human prompts using CAPS syntax; the AI agent parses CAPS precisely and responds in standard natural language and GitHub-Flavored Markdown (never in CAPS syntax).
 * **Theoretical Foundation (Attention Anchoring):** Standard conversational prose produces soft, diffuse self-attention ($Q \times K^T$) distributions where models must infer intent. CAPS symbols act as high-contrast semantic anchors that explicitly separate lookup context (`-`), actionable directives (`>`), queries or doubts (`?`), diagnostic errors (`!`), and state transforms (`:` $\rightarrow$ `=`).
 
 ---

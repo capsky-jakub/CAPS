@@ -3,12 +3,12 @@
 </p>
 
 # **CAPS: Cognitive AI Prompt Syntax**
-### *A Symbolic, Hierarchical DSL & Cognitive Framework for Deterministic Human-to-AI Interaction*
+### *A Symbolic, Hierarchical DSL & Cognitive Framework for Precise Human-to-AI Interaction*
 
 [![Specification Version](https://img.shields.io/badge/specification-v1.1.0-blue?style=flat-square)](CAPS-DSL.md)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-lightgrey?style=flat-square)](LICENSE)
 
-**CAPS (Cognitive AI Prompt Syntax)** is a declarative, asymmetric, write-only Domain-Specific Language (DSL) and human-to-agent communication protocol engineered to maximize intent precision, token efficiency, and deterministic parsing in Large Language Model (LLM) workflows.
+**CAPS (Cognitive AI Prompt Syntax)** is a declarative, asymmetric, write-only Domain-Specific Language (DSL) and human-to-agent communication protocol engineered to maximize intent precision, token efficiency, and explicit structure in Large Language Model (LLM) workflows.
 
 ---
 
@@ -37,7 +37,7 @@
 1. **Transformer Attention Anchoring ($Q \times K^T$):** Standard conversational prose produces diffuse self-attention distributions where models must infer intent from surrounding filler. CAPS prefixes (`-`, `?`, `>`, `!`, `:`, `=`, `///`) serve as high-contrast semantic anchors that explicitly separate static context from executable directives, uncertainties, diagnostic symptoms, and state transitions.
 2. **Hierarchical Scope Isolation:** Indentation via symbol repetition (`--`, `>>>`, `::::`) or integer compression (`2-`, `3>`) constructs a strict Abstract Syntax Tree (AST). Child nodes elaborate exclusively on their direct parent node, preventing local constraints or sub-queries from leaking globally across the prompt.
 3. **Cognitive Pre-Processing (QIQO):** Beyond machine parsing, CAPS acts as a *"Quality In, Quality Out"* mental framework—guiding the author to decouple baseline facts (`-`), desired actions (`>`), target results (`=`), uncertainties or queries (`?`), and diagnostic errors (`!`) before prompting.
-4. **Asymmetric Design Contract:** CAPS is strictly a **Human-to-AI** input syntax. The user prompts in CAPS; the AI agent parses the hierarchy deterministically and responds in standard natural language and Markdown.
+4. **Asymmetric Design Contract:** CAPS is strictly a **Human-to-AI** input syntax. The user prompts in CAPS; the AI agent parses the hierarchy precisely and responds in standard natural language and Markdown.
 
 ---
 
@@ -79,7 +79,7 @@
 
 ## Examples
 
-Authentic real-world CAPS prompts showing how baseline context, execution controls, multi-line requirements, scoped constraints, and open questions fit into a deterministic hierarchy.
+Authentic real-world CAPS prompts showing how baseline context, execution controls, multi-line requirements, scoped constraints, and open questions fit into an explicit hierarchy.
 
 ### SW
 
@@ -153,7 +153,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 ### Key Takeaways
 
 * **High-Density Triage & Context Reset (`///`, `!`):** A standalone `///` cleanly closes the prior sub-topic while keeping the session's active project, `!` anchors the failing symptom with a scoped diagnostic clue (`-- Edit -> Paste from menu bar works`), and `-` supplies the system-level cause (*In Short...*).
-* **Deterministic Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `>w` triggers web lookup, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
+* **Explicit Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `>w` triggers web lookup, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
 * **Strict Scope Isolation (`-` → `----`, `=` → `---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
 * **Block Inheritance (`~~~`):** Multi-line specifications (*SW*) and terminal outputs (*OS*) inherit their parent node's scope (`=` or `--`) without repeating prefixes on every line.
 * **More Examples:** See [CAPS-DSL.md](CAPS-DSL.md) (including `:` → `=` code transitions) and the 7 domain showcases in [examples/](examples/).
