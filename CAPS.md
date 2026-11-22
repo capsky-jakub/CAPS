@@ -1,4 +1,4 @@
-# **CAPS: Cognitive AI Prompt Syntax (v1.1.0)**
+# **CAPS: Cognitive AI Prompt Syntax (v1.2.0)**
 For maximum communication efficiency and precision, I employ the **CAPS** protocol. This system uses symbolic prefixes and hierarchical nesting to define intent, context, and transformations.
 
 ---
@@ -11,9 +11,15 @@ For maximum communication efficiency and precision, I employ the **CAPS** protoc
 * `!` = **ERROR / SYMPTOM:** Bugs, exceptions, stack traces, broken behavior, or issues to diagnose/fix. (Problem state requiring resolution).
 * `:` = **BEFORE:** Input pattern, reference code, or the initial state before modification.
 * `=` = **AFTER/RESULT:** Output pattern, final output state, or specific target results.
-* `///` = **TOPIC / MILESTONE BOUNDARY:** When used at the very beginning of a newly initiated session, it defines the session's overarching **Prime Topic**. When used mid-session, it confirms that the previous **Sub-Topic** is completed/approved, clears transient sub-topic state (resolved errors `!`, answered queries `?`, finished tasks `>`), retains the Prime Topic and session-wide context (`-`), and initiates a new **Sub-Topic**. Can be used standalone or with a title (e.g., `/// OS security audit`).
 
-### **1.1 Operational Indicators (Shorthand Macros)**
+### **1.1 Structural Markers**
+
+Fixed 3-character framing tokens that structure sessions and multi-line payloads. Unlike Semantic Symbols, Structural Markers cannot be repeated or integer-prefixed (they never carry their own nesting depth):
+
+* `///` = **TOPIC / MILESTONE BOUNDARY:** When used at the very beginning of a newly initiated session, it defines the session's overarching **Prime Topic**. When used mid-session, it confirms that the previous **Sub-Topic** is completed/approved, clears transient sub-topic state (resolved errors `!`, answered queries `?`, finished tasks `>`), retains the Prime Topic and session-wide context (`-`), and initiates a new **Sub-Topic**. Can be used standalone or with a title (e.g., `/// OS security audit`).
+* `~~~` = **CONTEXTUAL BLOCK FENCE:** Encloses raw, multi-line literal payloads (code snippets, file excerpts, logs) on independent lines immediately following a statement node (with no intervening blank lines). Enclosed content is treated as raw, literal data and automatically inherits the statement type and hierarchy level of the immediately preceding node without requiring internal prefixes or indentation.
+
+### **1.2 Operational Macros**
 
 Predefined macro tokens attached directly to their semantic symbol without spaces. Each macro is declared on its own dedicated line and is active either for a **`[Single Turn]`** (current prompt–response cycle only) or the **`[Entire Session]`** (persisting across `///` sub-topic transitions). Used at root level (depth 1), a macro applies globally; when hierarchically nested (e.g., `>>www`, `2>=`), it applies strictly to its direct parent node's subtree and overrides conflicting root-level macros for that subtree:
 
@@ -30,14 +36,14 @@ Predefined macro tokens attached directly to their semantic symbol without space
 
 **Deactivation & Suppression (`.` Suffix):**
 Appending a trailing dot (`.`) to any operational macro or alias turns it **OFF** or **suppresses** its behavior:
-1. **On `[Entire Session]` Indicators (`>t.`, `>%.`, `-//.`, `-$.`, `=&{lang}.`):**
-   * Deactivates an active session-wide indicator from that turn forward (until re-enabled).
+1. **On `[Entire Session]` Macros (`>t.`, `>%.`, `-//.`, `-$.`, `=&{lang}.`):**
+   * Deactivates an active session-wide macro from that turn forward (until re-enabled).
    * Even if not previously activated, typing `-$.` or `-//.` acts as an explicit session lock (*"Do not use `sudo`"* / *"Do not connect to Chrome"*).
-2. **On `[Single Turn]` Indicators (`>w.`, `>=.`, `=-.`, `=+.`, etc.):**
+2. **On `[Single Turn]` Macros (`>w.`, `>=.`, `=-.`, `=+.`, etc.):**
    * Acts as a 1-token negative constraint (suppression) for that turn or nested subtree:
      * `>w.` (`>www.`) = *"Do **not** search the web for this prompt/sub-task (rely strictly on local context)."*
      * `>=.` (`>test.`) = *"Do **not** run empirical tests/commands right now (just write/update the code)."*
-   * When used on a nested child node (e.g., root `=max` with a nested `==max.` on a trivial sub-step), it exempts that child node's subtree from the root indicator.
+   * When used on a nested child node (e.g., root `=max` with a nested `==max.` on a trivial sub-step), it exempts that child node's subtree from the root macro.
 
 ---
 
@@ -49,11 +55,10 @@ Depth and logical parent-child relationships are defined either by **repetition*
 * **Repetition:** `--` is level 2, `!!!` is level 3, `::::` is level 4, etc. (Preferred for visual clarity).
 * **Compression:** `2-` is level 2, `3!` is level 3. (Preferred for deep nesting or brevity).
 * **Nesting Logic:** A nested line (e.g., `??` or `2?`) always attaches to and elaborates on the most recent preceding statement one level above it (its direct parent, e.g., `>` or `1>`), without skipping levels.
-* **Exception:** The `///` symbol cannot be repeated or nested.
 
 ### **2.1 Lexical & Disambiguation Rules**
 
-* **Whitespace Separation:** A single whitespace is mandatory between a structural symbol and its statement text (e.g., `> Task`, not `>Task`), except when a symbol line has no inline text and is immediately followed by a `~~~` contextual block (e.g., `::::` or `====` before `~~~`). The absence of whitespace before characters is reserved strictly for operational macros (e.g., `>www`, `-$`, `-//`, `=?`).
+* **Whitespace Separation:** A single whitespace is mandatory between a semantic symbol and its statement text (e.g., `> Task`, not `>Task`), except when a symbol line has no inline text and is immediately followed by a `~~~` contextual block (e.g., `::::` or `====` before `~~~`). The absence of whitespace before characters is reserved strictly for operational macros (e.g., `>www`, `-$`, `-//`, `=?`).
 * **Column 0 & Indentation:** Leading whitespace (spaces or tabs) before symbols is ignored by the parser. Depth is determined exclusively by symbol repetition (`--`) or integer compression (`2-`), not by visual column indentation.
 * **Notation Exclusivity:** Visual repetition and integer compression are mutually exclusive per node. Combining them (e.g., `2>>`) is invalid syntax.
 * **Blank Lines & Trivia:** Empty lines between statements are treated as trivia and do not alter the active hierarchy or reset parent-child scope.
@@ -61,16 +66,7 @@ Depth and logical parent-child relationships are defined either by **repetition*
 
 ---
 
-## **3. Contextual Blocks (Inheritance)**
-
-For multi-line payloads (code snippets, file excerpts, logs) that belong to a single node:
-
-* **Syntax:** Enclose multi-line content within `~~~` on independent lines immediately following a statement node (with no intervening blank lines).
-* **Inheritance & Literal Payload:** Content enclosed within `~~~` is treated as raw, literal data. It automatically inherits the statement type and hierarchy level of the immediately preceding node without requiring internal prefixes or indentation.
-
----
-
-## **4. Example**
+## **3. Example**
 
 ```text
 /// Keypress Recorder/Replayer

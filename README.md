@@ -5,10 +5,10 @@
 
 # **CAPS: Cognitive AI Prompt Syntax**
 
-[![Specification Version](https://img.shields.io/badge/specification-v1.1.0-blue?style=flat-square)](CAPS-DSL.md)
+[![Specification Version](https://img.shields.io/badge/specification-v1.2.0-blue?style=flat-square)](CAPS-DSL.md)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-lightgrey?style=flat-square)](LICENSE)
 
-> ## *"Be flexible, explicit, and concise - all at once."*
+# *"Be flexible, explicit and concise - all at once."*
 
 ## The first DSL
 
@@ -38,7 +38,7 @@
 
 ## Why CAPS?
 
-1. **Transformer Attention Anchoring ($Q \times K^T$):** Standard conversational prose produces diffuse self-attention distributions where models must infer intent from surrounding filler. CAPS prefixes (`-`, `?`, `>`, `!`, `:`, `=`, `///`) serve as high-contrast semantic anchors that explicitly separate static context from executable directives, uncertainties, diagnostic symptoms, and state transitions.
+1. **Transformer Attention Anchoring ($Q \times K^T$):** Standard conversational prose produces diffuse self-attention distributions where models must infer intent from surrounding filler. CAPS semantic symbols (`-`, `?`, `>`, `!`, `:`, `=`) serve as high-contrast semantic anchors that explicitly separate static context from executable directives, uncertainties, diagnostic symptoms, and state transitions.
 2. **Hierarchical Scope Isolation:** Indentation via symbol repetition (`--`, `>>>`, `::::`) or integer compression (`2-`, `3>`) constructs a strict Abstract Syntax Tree (AST). Child nodes elaborate exclusively on their direct parent node, preventing local constraints or sub-queries from leaking globally across the prompt.
 3. **Cognitive Pre-Processing (QIQO):** Beyond machine parsing, CAPS acts as a *"Quality In, Quality Out"* mental framework—guiding the author to decouple baseline facts (`-`), desired actions (`>`), target results (`=`), uncertainties or queries (`?`), and diagnostic errors (`!`) before prompting.
 4. **Asymmetric Design Contract:** CAPS is strictly a **Human-to-AI** input syntax. The user prompts in CAPS; the AI agent parses the hierarchy precisely and responds in standard natural language and Markdown.
@@ -46,6 +46,10 @@
 ---
 
 ## Quick Syntax Overview
+
+### Semantic Symbols
+
+Single-character statement prefixes that can be nested via repetition (`--`, `>>>`) or integer compression (`2-`, `3>`):
 
 | Symbol | Type | Purpose |
 | :--- | :--- | :--- |
@@ -55,10 +59,17 @@
 | `!` | **ERROR / SYMPTOM** | Bugs, exceptions, stack traces, or broken behavior to diagnose/resolve. |
 | `:` | **BEFORE** | Input pattern, reference code, or initial state prior to modification. |
 | `=` | **AFTER / RESULT** | Output pattern, target state, or desired transformation result. |
-| `///` | **TOPIC / MILESTONE BOUNDARY** | Establishes the overarching **Prime Topic** at session start, or confirms the previous **Sub-Topic** is completed and initiates a new **Sub-Topic** mid-session. |
-| `~~~` | **BLOCK FENCE** | Encloses multi-line literal payloads (code, logs, configs) inheriting the parent node's scope. |
 
-### Operational Shorthand Macros
+### Structural Markers
+
+Fixed 3-character framing tokens that cannot be repeated or integer-prefixed (they never carry their own nesting depth):
+
+| Marker | Type | Purpose |
+| :--- | :--- | :--- |
+| `///` | **TOPIC / MILESTONE BOUNDARY** | Establishes the overarching **Prime Topic** at session start, or confirms the previous **Sub-Topic** is completed and initiates a new **Sub-Topic** mid-session. |
+| `~~~` | **CONTEXTUAL BLOCK FENCE** | Encloses raw, multi-line literal payloads (code, logs, configs) inheriting the preceding node's statement type and nesting depth. |
+
+### Operational Macros
 
 | Macro | Alias | Scope | Meaning |
 | :--- | :--- | :--- | :--- |
@@ -188,7 +199,7 @@ To enable native CAPS comprehension in your AI coding assistant or LLM environme
 
 ```markdown
 * The user can prompt you using the **CAPS (Cognitive AI Prompt Syntax)**.
-* When CAPS is used, parse the user's inputs according to the semantic symbols (`-`, `?`, `>`, `!`, `:`, `=`, `///`) and hierarchical nesting defined by the CAPS protocol.
+* When CAPS is used, parse the user's inputs according to the semantic symbols (`-`, `?`, `>`, `!`, `:`, `=`), structural markers (`///`, `~~~`), operational macros, and hierarchical nesting defined by the CAPS protocol.
 * CAPS is strictly for user inputs. Do not use CAPS syntax in your responses.
 ```
 
