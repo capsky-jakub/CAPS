@@ -99,7 +99,7 @@ Depth and logical parent-child relationships are defined either by **repetition*
 ~~~
 ?? I guess a Python script is the best fit here
 == The tool must be able to record and replay all kinds of keys and keyboard shortcuts
---- Except system interrupt combinations like "Ctrl+C", of course
+>>> Exclude system interrupt combinations like "Ctrl+C"
 == The tool should preserve the exact delay between every key or hotkey
 --- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
 == There should also be a simple config file for adjusting key parameters and options

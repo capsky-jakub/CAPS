@@ -69,28 +69,18 @@ Depth and logical parent-child relationships are defined either by **repetition*
 ## **3. Example**
 
 ```text
-/// Keypress Recorder/Replayer
--$
->w
+/// API Auth Migration
 =?
-- I have 2 external monitors connected to my laptop
-- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
--- Each app window has a fixed position
--- Arranging all workspaces and windows usually takes a few minutes
---- I do this using many different keyboard shortcuts (hotkeys)
----- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
---- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
-= A terminal tool (or set of tools) that:
+- Backend uses Node 22 and Express 5
+! Legacy JWT middleware rejects rotated keys
+-- Stack trace:
 ~~~
-1. records my keyboard input sequence
-2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
-3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
+JsonWebTokenError: invalid signature
 ~~~
-?? I guess a Python script is the best fit here
-== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
---- Except system interrupt combinations like "Ctrl+C", of course
-== The tool should preserve the exact delay between every key or hotkey
---- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
-== There should also be a simple config file for adjusting key parameters and options
---- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
+> Plan migration from static secret to JWKS
+>>w
+2> Preserve active sessions during rollout
+:: jwt.verify(token, SECRET)
+== jwt.verify(token, getSigningKey)
+3? Should getSigningKey cache keys in memory or Redis?
 ```

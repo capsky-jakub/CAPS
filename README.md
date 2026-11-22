@@ -8,7 +8,7 @@
 [![Specification Version](https://img.shields.io/badge/specification-v1.2.0-blue?style=flat-square)](CAPS-DSL.md)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-lightgrey?style=flat-square)](LICENSE)
 
-# *"Be flexible, explicit and concise - all at once."*
+## *"Be flexible, explicit and concise - all at once."*
 
 ## The first DSL
 
@@ -18,8 +18,8 @@
 
 ## In Short...
 
-**Prose** *(71 words / 425 chars)*:
-> Found a new issue during our testing. Clipboard paste via Ctrl+V stopped working, although Edit -> Paste from the menu bar still works. For context, I ran an OS update earlier today. You have `sudo` privileges to inspect system logs and diagnostics, and please search the web for any known regressions from today's update. Do not modify any files or system configuration yet—just diagnose the root cause and propose next steps.
+**Prose** *(72 words / 427 chars)*:
+> Found a new issue during our testing. Clipboard paste via Ctrl+V stopped working, although Edit -> Paste from the menu bar still works. For context, I ran an OS update earlier today. You have `sudo` privileges to inspect system logs and diagnostics, and please search the web for any known regressions from today's update. Do not modify any files or system configuration yet — just diagnose the root cause and propose next steps.
 
 **CAPS** *(7 lines / 95 chars — 78% shorter, zero ambiguity)*:
 ```text
@@ -40,8 +40,22 @@
 
 1. **Transformer Attention Anchoring ($Q \times K^T$):** Standard conversational prose produces diffuse self-attention distributions where models must infer intent from surrounding filler. CAPS semantic symbols (`-`, `?`, `>`, `!`, `:`, `=`) serve as high-contrast semantic anchors that explicitly separate static context from executable directives, uncertainties, diagnostic symptoms, and state transitions.
 2. **Hierarchical Scope Isolation:** Indentation via symbol repetition (`--`, `>>>`, `::::`) or integer compression (`2-`, `3>`) constructs a strict Abstract Syntax Tree (AST). Child nodes elaborate exclusively on their direct parent node, preventing local constraints or sub-queries from leaking globally across the prompt.
-3. **Cognitive Pre-Processing (QIQO):** Beyond machine parsing, CAPS acts as a *"Quality In, Quality Out"* mental framework—guiding the author to decouple baseline facts (`-`), desired actions (`>`), target results (`=`), uncertainties or queries (`?`), and diagnostic errors (`!`) before prompting.
+3. **Cognitive Pre-Processing (QIQO):** Beyond machine parsing, CAPS acts as a *"Quality In, Quality Out"* mental framework — guiding the author to decouple baseline facts (`-`), desired actions (`>`), target results (`=`), uncertainties or queries (`?`), and diagnostic errors (`!`) before prompting.
 4. **Asymmetric Design Contract:** CAPS is strictly a **Human-to-AI** input syntax. The user prompts in CAPS; the AI agent parses the hierarchy precisely and responds in standard natural language and Markdown.
+
+---
+
+## Who Is CAPS For?
+
+CAPS is built for anyone using AI on complex, multi-constraint, or high-precision tasks — across software, engineering, science, and analytical professions:
+
+* **Software & IT:** Software Developer, Systems Architect, DevOps / SRE, Linux / SysAdmin, Cloud Engineer, Security Engineer, QA / Test Automation Engineer, Database Administrator (DBA)
+* **AI & Data:** AI / ML Engineer, Agent / Prompt Engineer, Data Scientist, Data Engineer, Business Intelligence Analyst
+* **Engineering & Architecture:** Building / Civil Architect, Mechanical Engineer, Electrical / Electronics Engineer, Industrial / Process Engineer, CAD / BIM Specialist
+* **Science & Technical R&D:** Chemist, Physicist, Biologist / Biotech Researcher, Lab Technician, Pharmacologist / Clinical Researcher, Academic Researcher
+* **Finance, Legal & Enterprise:** Accountant, Tax Advisor / Auditor, Financial / Risk Analyst, Legal Counsel / Contract Specialist, ERP Consultant, Business Analyst, Product Manager, Technical Writer
+
+*...and anyone else keen on engineering their prompts.*
 
 ---
 
@@ -92,36 +106,48 @@ Fixed 3-character framing tokens that cannot be repeated or integer-prefixed (th
 
 ---
 
+## From Prompt to AST
+
+A compact prompt combining all six semantic symbols, both structural markers, global vs. subtree macros, and mixed repetition/integer nesting:
+
+```text
+/// API Auth Migration
+=?
+- Backend uses Node 22 and Express 5
+! Legacy JWT middleware rejects rotated keys
+-- Stack trace:
+~~~
+JsonWebTokenError: invalid signature
+~~~
+> Plan migration from static secret to JWKS
+>>w
+2> Preserve active sessions during rollout
+:: jwt.verify(token, SECRET)
+== jwt.verify(token, getSigningKey)
+3? Should getSigningKey cache keys in memory or Redis?
+```
+
+**Parsed AST:**
+
+```text
+/// API Auth Migration
+├── [macro] =?  (global: advisory / read-only)
+├── - Backend uses Node 22 and Express 5
+├── ! Legacy JWT middleware rejects rotated keys
+│   └── -- Stack trace: + [~~~ payload]
+└── > Plan migration from static secret to JWKS
+    ├── [macro] >>w  (subtree: web search)
+    ├── 2> Preserve active sessions during rollout
+    ├── :: jwt.verify(token, SECRET)
+    └── == jwt.verify(token, getSigningKey)
+        └── 3? Should getSigningKey cache keys in memory or Redis?
+```
+
+---
+
 ## Examples
 
 Authentic real-world CAPS prompts showing how baseline context, execution controls, multi-line requirements, scoped constraints, and open questions fit into an explicit hierarchy.
-
-### SW
-
-```text
-/// Keypress Recorder/Replayer
->w
-- I have 2 external monitors connected to my laptop
-- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
--- Each app window has a fixed position
--- Arranging all workspaces and windows usually takes a few minutes
---- I do this using many different keyboard shortcuts (hotkeys)
----- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
---- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
-= A terminal tool (or set of tools) that:
-~~~
-1. records my keyboard input sequence
-2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
-3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
-~~~
-?? I guess a Python script is the best fit here
-== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
---- Except system interrupt combinations like "Ctrl+C", of course
-== The tool should preserve the exact delay between every key or hotkey
---- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
-== There should also be a simple config file for adjusting key parameters and options
---- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
-```
 
 ### OS
 
@@ -148,6 +174,35 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 ~~~
 ```
 
+### SW
+
+```text
+/// Keypress Recorder/Replayer
+-$
+>w
+=?
+- I have 2 external monitors connected to my laptop
+- I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
+-- Each app window has a fixed position
+-- Arranging all workspaces and windows usually takes a few minutes
+--- I do this using many different keyboard shortcuts (hotkeys)
+---- e.g., placing Double Commander: "Ctrl+5...Super+ArrowUp...Super+Shift+ArrowLeft...Super+ArrowLeft"
+--- Every time I reboot the system, I spend several minutes restoring my workspaces, which is annoying and inefficient
+= A terminal tool (or set of tools) that:
+~~~
+1. records my keyboard input sequence
+2. saves the sequence to a file with a user-specified name (e.g., "sap_session")
+3. replays/executes the sequence on demand so the workspaces and windows are arranged the exact same way as if I had opened and placed them manually
+~~~
+?? I guess a Python script is the best fit here
+== The tool must be able to record and replay all kinds of keys and keyboard shortcuts
+>>> Exclude system interrupt combinations like "Ctrl+C"
+== The tool should preserve the exact delay between every key or hotkey
+--- e.g., the following sequence launches Chrome and opens a new tab: "Super ...(1000ms)...c...(200ms)...h...(200ms)...r...(200ms)...o...(200ms)...Enter ...(3000ms)...Ctrl+T"
+== There should also be a simple config file for adjusting key parameters and options
+--- e.g., target output directory, extra delay between keyboard shortcuts (hotkeys), etc.
+```
+
 ### Law / Subagents
 
 ```text
@@ -169,7 +224,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 * **Topic Framing & Context Reset (`///`):** Opening with `/// <Title>` establishes the session's prime topic, while a standalone `///` mid-session cleanly closes a completed sub-topic without losing baseline session context (`-`).
 * **Explicit Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `>w` triggers web lookup, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
-* **Strict Scope Isolation (`-` → `----`, `=` → `---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
+* **Strict Scope Isolation (`-` → `----`, `=` → `>>>`/`---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
 * **Block Inheritance (`~~~`):** Multi-line specifications (*SW*) and terminal outputs (*OS*) inherit their parent node's scope (`=` or `--`) without repeating prefixes on every line.
 * **More Examples:** See [CAPS-DSL.md](CAPS-DSL.md) (including `:` → `=` code transitions) and the 7 domain showcases in [examples/](examples/).
 
@@ -179,7 +234,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 * **[CAPS-DSL.md](CAPS-DSL.md)** — The full canonical RFC-style specification, including architectural foundations, lexical rules, multi-domain integration examples, and the formal ISO/IEC 14977 EBNF grammar.
 * **[CAPS-DSL.txt](CAPS-DSL.txt)** — Exact plaintext mirror of `CAPS-DSL.md` for universal ingestion across tools and web interfaces.
-* **[CAPS.md](CAPS.md)** — Condensed, token-optimized specification (~5.7 KB) designed for direct embedding into AI system prompts, custom instructions, and agent rule files (e.g., `GEMINI.md`, `CLAUDE.md`, `.cursorrules`).
+* **[CAPS.md](CAPS.md)** — Condensed, token-optimized specification (~8.3 KB / ~2.2K tokens, ~0.2% of a 1M context window) designed for direct embedding into AI system prompts, custom instructions, and agent rule files (e.g., `GEMINI.md`, `CLAUDE.md`, `.cursorrules`).
 * **[LICENSE](LICENSE)** — Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`) license text.
 * **[assets/](assets/)** — Official CAPS brand assets in vector ([caps-logo.svg](assets/caps-logo.svg)) and full-resolution raster ([caps-logo.png](assets/caps-logo.png)) formats.
 * **[examples/](examples/)** — Curated, anonymized real-world CAPS prompts across 7 domains:
@@ -195,7 +250,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 ## Quick Start: Adding CAPS to Your AI Agent
 
-To enable native CAPS comprehension in your AI coding assistant or LLM environment, add the contents of **[CAPS.md](CAPS.md)** to your global system prompt or agent rules file alongside these two directives:
+To enable native CAPS comprehension in your AI coding assistant or LLM environment, add the contents of **[CAPS.md](CAPS.md)** (~2.2K tokens — ~0.2% of a 1M context window) to your global system prompt or agent rules file alongside these directives:
 
 ```markdown
 * The user can prompt you using the **CAPS (Cognitive AI Prompt Syntax)**.
