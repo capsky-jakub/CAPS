@@ -12,6 +12,26 @@
 
 ---
 
+## In Short...
+
+**Without CAPS** *(68 words / 406 chars)*:
+> Found a new issue. Clipboard paste via Ctrl+V stopped working, although Edit -> Paste from the menu bar still works. For context, I ran an OS update earlier today. You have `sudo` privileges to inspect system logs and diagnostics, and please search the web for any known regressions from today's update. Do not modify any files or system configuration yet—just diagnose the root cause and propose next steps.
+
+**With CAPS** *(7 lines / 95 chars — 77% shorter, zero ambiguity)*:
+```text
+///
+! Clipboard paste (Ctrl+V)
+-- Edit -> Paste from menu bar works
+- Updated OS today
+-$
+>w
+=?
+```
+
+*See [Quick Syntax Overview](#quick-syntax-overview) below for the full symbol and macro legend.*
+
+---
+
 ## Why CAPS?
 
 1. **Transformer Attention Anchoring ($Q \times K^T$):** Standard conversational prose produces diffuse self-attention distributions where models must infer intent from surrounding filler. CAPS prefixes (`-`, `?`, `>`, `!`, `:`, `=`, `///`) serve as high-contrast semantic anchors that explicitly separate static context from executable directives, uncertainties, diagnostic symptoms, and state transitions.
@@ -65,9 +85,7 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 ```text
 /// Keypress Recorder/Replayer
--$
 >w
-=?
 - I have 2 external monitors connected to my laptop
 - I work with several virtual desktops (workspaces) and usually have 2–3 windows on each monitor
 -- Each app window has a fixed position
@@ -134,10 +152,11 @@ Authentic real-world CAPS prompts showing how baseline context, execution contro
 
 ### Key Takeaways
 
-* **Deterministic Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
+* **High-Density Triage & Context Reset (`///`, `!`):** A standalone `///` cleanly closes the prior sub-topic while keeping the session's active project, `!` anchors the failing symptom with a scoped diagnostic clue (`-- Edit -> Paste from menu bar works`), and `-` supplies the system-level cause (*In Short...*).
+* **Deterministic Agent Controls (`-$`, `>w`, `=?`, `>>w`):** Top-level macros govern the entire turn (`-$` grants elevated diagnostics, `>w` triggers web lookup, `=?` enforces read-only advisory mode), while nested `>>w` scopes web search strictly to its parent `>` directive.
 * **Strict Scope Isolation (`-` → `----`, `=` → `---`):** Constraints like `"Ctrl+C"` exclusion (*SW*), `_raw` conversion context (*Law / Subagents*), and folder scoping attach exclusively to their parent node instead of leaking globally.
 * **Block Inheritance (`~~~`):** Multi-line specifications (*SW*) and terminal outputs (*OS*) inherit their parent node's scope (`=` or `--`) without repeating prefixes on every line.
-* **More Examples:** See [CAPS-DSL.md](CAPS-DSL.md) (including `!` error symptoms and `:` → `=` code transitions) and the 7 domain showcases in [examples/](examples/).
+* **More Examples:** See [CAPS-DSL.md](CAPS-DSL.md) (including `:` → `=` code transitions) and the 7 domain showcases in [examples/](examples/).
 
 ---
 
